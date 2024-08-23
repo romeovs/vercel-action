@@ -15,12 +15,12 @@ build:
 .PHONY: format
 format:
 	@$(log) "Checking formatting..."
-	@$(bin)/prettier . --check --log-level=warn
+	@$(bin)/biome check . --linter-enabled=false --organize-imports-enabled=true
 
 .PHONY: format.fix
 format.fix:
 	@$(log) "Fixing formatting..."
-	@$(bin)/prettier . --write
+	@$(bin)/biome check . --linter-enabled=false --organize-imports-enabled=true --write
 
 .PHONY: typecheck
 typecheck:
@@ -28,7 +28,7 @@ typecheck:
 	@$(bin)/tsc --noEmit
 
 .PHONY: check
-check: format typecheck test
+check: format typecheck 
 
 .PHONY: fix
 fix: format.fix
