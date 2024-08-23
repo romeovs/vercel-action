@@ -2,5 +2,8 @@
 	"name": "@romeovs/vercel-deploy-action",
 	"version": "0.0.1",
 	"author": "Romeo Van Snick <romeo@romeovansnick.be>",
-	"license": "ISC"
+	"license": "ISC",
+	"devDependencies": {
+		"@biomejs/biome": "^1.8.3"
+	}
 }
