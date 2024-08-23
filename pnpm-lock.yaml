@@ -20,6 +20,9 @@ importers:
       '@types/node':
         specifier: ^22.5.0
         version: 22.5.0
+      '@vercel/ncc':
+        specifier: ^0.38.1
+        version: 0.38.1
 
 packages:
 
@@ -95,6 +98,10 @@ packages:
   '@types/node@22.5.0':
     resolution: {integrity: sha512-DkFrJOe+rfdHTqqMg0bSNlGlQ85hSoh2TPzZyhHsXnMtligRWpxUySiyw8FY14ITt24HVCiQPWxS3KO/QlGmWg==}
 
+  '@vercel/ncc@0.38.1':
+    resolution: {integrity: sha512-IBBb+iI2NLu4VQn3Vwldyi2QwaXt5+hTyh58ggAMoCGE6DJmPvwL3KPBWcJl1m9LYPChBLE980Jw+CS4Wokqxw==}
+    hasBin: true
+
   tunnel@0.0.6:
     resolution: {integrity: sha512-1h/Lnq9yajKY2PEbBadPXj3VxsDDu844OnaAo52UVmIzIvwwtBPIuNvkjuzBlTWpfJyUbG3ez0KSBibQkj4ojg==}
     engines: {node: '>=0.6.11 <=0.7.0 || >=0.7.3'}
@@ -168,6 +175,8 @@ snapshots:
   '@types/node@22.5.0':
     dependencies:
       undici-types: 6.19.8
+
+  '@vercel/ncc@0.38.1': {}
 
   tunnel@0.0.6: {}
 
