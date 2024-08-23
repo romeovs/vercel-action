@@ -34,4 +34,9 @@ export async function inspect(options: InspectOptions) {
 
 	core.setOutput("deployment-url", deploymentUrl)
 	core.setOutput("inspect-url", deploymentUrl)
+
+	const ready = stderr.includes("● Ready")
+	if (!ready) {
+		throw new Error("Deployment was not successful")
+	}
 }
