@@ -32428,10 +32428,10 @@ async function deploy(options) {
         args.push("--prebuilt");
     }
     const meta = {
-        "commit-sha": context.sha,
-        "commit-author": context.actor,
-        "github-org": context.repo.owner,
-        "github-repo": context.repo.repo,
+        "commitSha": context.sha,
+        "commitAuthor": context.actor,
+        "githubOrg": context.repo.owner,
+        "githubRepo": context.repo.repo,
     };
     for (const k in meta) {
         args.push("-m", `${k}=${meta[k]}`);
@@ -32488,6 +32488,10 @@ async function inspect(options) {
     });
     core.setOutput("deployment-url", deploymentUrl);
     core.setOutput("inspect-url", deploymentUrl);
+    const ready = stderr.includes("● Ready");
+    if (!ready) {
+        throw new Error("Deployment was not successful");
+    }
 }
 
 ;// CONCATENATED MODULE: ./src/index.ts

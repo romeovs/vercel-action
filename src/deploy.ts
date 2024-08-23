@@ -24,10 +24,10 @@ export async function deploy(options: DeployOptions) {
 	}
 
 	const meta = {
-		"commit-sha": context.sha,
-		"commit-author": context.actor,
-		"github-org": context.repo.owner,
-		"github-repo": context.repo.repo,
+		"commitSha": context.sha,
+		"commitAuthor": context.actor,
+		"githubOrg": context.repo.owner,
+		"githubRepo": context.repo.repo,
 	}
 
 	for (const k in meta) {
