@@ -1,5 +1,5 @@
-import * as exec from "@actions/exec"
 import * as core from "@actions/core"
+import * as exec from "@actions/exec"
 
 type InspectOptions = {
 	deploymentUrl: string

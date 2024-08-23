@@ -2,10 +2,10 @@ import * as core from "@actions/core"
 
 import * as inputs from "./inputs"
 
-import { run } from "./run"
-import { pull } from "./pull"
 import { deploy } from "./deploy"
 import { inspect } from "./inspect"
+import { pull } from "./pull"
+import { run } from "./run"
 
 run(async function main() {
 	const production = inputs.boolean("production")
@@ -45,4 +45,3 @@ run(async function main() {
 		token,
 	})
 })
-

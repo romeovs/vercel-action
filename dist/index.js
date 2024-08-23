@@ -32365,51 +32365,8 @@ function inputs_boolean(name, required = false) {
     return value === "true" || value === "1";
 }
 
-;// CONCATENATED MODULE: ./src/run.ts
-
-async function run(fn) {
-    try {
-        await fn();
-    }
-    catch (err) {
-        if (err instanceof Error) {
-            core.setFailed(err.message);
-            return;
-        }
-        core.setFailed("unknown error");
-    }
-}
-
-;// CONCATENATED MODULE: external "node:fs"
-const external_node_fs_namespaceObject = require("node:fs");
 // EXTERNAL MODULE: ./node_modules/.pnpm/@actions+exec@1.1.1/node_modules/@actions/exec/lib/exec.js
 var exec = __nccwpck_require__(7775);
-;// CONCATENATED MODULE: ./src/pull.ts
-
-
-
-async function pull(options) {
-    const { cwd, token, production, orgId, projectId } = options;
-    const env = production ? "production" : "development";
-    const args = ["pull", "--yes", "--token", token, "--environment", env];
-    if (await exists(`.vercel/.env.${env}.local`)) {
-        core.info(".vercel directory already exists, skipping pull");
-        return;
-    }
-    core.exportVariable("VERCEL_ORG_ID", orgId);
-    core.exportVariable("VERCEL_PROJECT_ID", projectId);
-    await exec.exec("vercel", args, { cwd });
-}
-async function exists(path) {
-    try {
-        await external_node_fs_namespaceObject.promises.stat(path);
-        return true;
-    }
-    catch (error) {
-        return false;
-    }
-}
-
 // EXTERNAL MODULE: ./node_modules/.pnpm/@actions+github@6.0.0/node_modules/@actions/github/lib/github.js
 var github = __nccwpck_require__(5942);
 ;// CONCATENATED MODULE: ./src/deploy.ts
@@ -32428,10 +32385,10 @@ async function deploy(options) {
         args.push("--prebuilt");
     }
     const meta = {
-        "commitSha": context.sha,
-        "commitAuthor": context.actor,
-        "githubOrg": context.repo.owner,
-        "githubRepo": context.repo.repo,
+        commitSha: context.sha,
+        commitAuthor: context.actor,
+        githubOrg: context.repo.owner,
+        githubRepo: context.repo.repo,
     };
     for (const k in meta) {
         args.push("-m", `${k}=${meta[k]}`);
@@ -32461,7 +32418,7 @@ async function deploy(options) {
     }
     return {
         inspectUrl,
-        deploymentUrl
+        deploymentUrl,
     };
 }
 
@@ -32491,6 +32448,49 @@ async function inspect(options) {
     const ready = stderr.includes("● Ready");
     if (!ready) {
         throw new Error("Deployment was not successful");
+    }
+}
+
+;// CONCATENATED MODULE: external "node:fs"
+const external_node_fs_namespaceObject = require("node:fs");
+;// CONCATENATED MODULE: ./src/pull.ts
+
+
+
+async function pull(options) {
+    const { cwd, token, production, orgId, projectId } = options;
+    const env = production ? "production" : "development";
+    const args = ["pull", "--yes", "--token", token, "--environment", env];
+    if (await exists(`.vercel/.env.${env}.local`)) {
+        core.info(".vercel directory already exists, skipping pull");
+        return;
+    }
+    core.exportVariable("VERCEL_ORG_ID", orgId);
+    core.exportVariable("VERCEL_PROJECT_ID", projectId);
+    await exec.exec("vercel", args, { cwd });
+}
+async function exists(path) {
+    try {
+        await external_node_fs_namespaceObject.promises.stat(path);
+        return true;
+    }
+    catch (error) {
+        return false;
+    }
+}
+
+;// CONCATENATED MODULE: ./src/run.ts
+
+async function run(fn) {
+    try {
+        await fn();
+    }
+    catch (err) {
+        if (err instanceof Error) {
+            core.setFailed(err.message);
+            return;
+        }
+        core.setFailed("unknown error");
     }
 }
 

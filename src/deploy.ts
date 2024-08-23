@@ -1,5 +1,5 @@
-import * as exec from "@actions/exec"
 import * as core from "@actions/core"
+import * as exec from "@actions/exec"
 import * as github from "@actions/github"
 
 type DeployOptions = {
@@ -24,10 +24,10 @@ export async function deploy(options: DeployOptions) {
 	}
 
 	const meta = {
-		"commitSha": context.sha,
-		"commitAuthor": context.actor,
-		"githubOrg": context.repo.owner,
-		"githubRepo": context.repo.repo,
+		commitSha: context.sha,
+		commitAuthor: context.actor,
+		githubOrg: context.repo.owner,
+		githubRepo: context.repo.repo,
 	}
 
 	for (const k in meta) {
@@ -64,6 +64,6 @@ export async function deploy(options: DeployOptions) {
 
 	return {
 		inspectUrl,
-		deploymentUrl
+		deploymentUrl,
 	}
 }
