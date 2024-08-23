@@ -22,6 +22,11 @@ inputs:
   vercel-project-id:
     description: the vercel project id
     required: true
+outputs:
+  inspect-url:
+    description: Inspect the deployment at this URL
+  deployment-url:
+    description: Preview the deployment at this URL
 runs:
   using: node20
   main: dist/index.js

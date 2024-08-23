@@ -32486,7 +32486,8 @@ async function inspect(options) {
             },
         },
     });
-    // TODO: check if the deployment is successful (status: READY)
+    core.setOutput("deployment-url", deploymentUrl);
+    core.setOutput("inspect-url", deploymentUrl);
 }
 
 ;// CONCATENATED MODULE: ./src/index.ts
