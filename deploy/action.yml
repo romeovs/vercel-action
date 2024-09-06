@@ -9,6 +9,10 @@ inputs:
     description: set to "true" to deploy a prebuilt build
     required: true
     default: 'false'
+  promote:
+    description: set to "true" to automatically promote the deployment to the relevant domains
+    required: true
+    default: 'true'
   working-directory:
     description: the working directory
     required: false

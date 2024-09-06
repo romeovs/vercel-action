@@ -6,13 +6,14 @@ type DeployOptions = {
 	cwd: string
 	production: boolean
 	prebuilt: boolean
+	promote: boolean
 	token: string
 	orgId: string
 	projectId: string
 }
 
 export async function deploy(options: DeployOptions) {
-	const { production, prebuilt, cwd, token, orgId, projectId } = options
+	const { production, prebuilt, promote, cwd, token, orgId, projectId } = options
 	const { context } = github
 
 	const args: string[] = ["deploy", "--token", token, "--no-wait", "--archive=tgz"]
@@ -21,6 +22,9 @@ export async function deploy(options: DeployOptions) {
 	}
 	if (prebuilt) {
 		args.push("--prebuilt")
+	}
+	if (!promote) {
+		args.push("--skip-domain")
 	}
 
 	const meta = {

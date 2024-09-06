@@ -15,6 +15,7 @@ run(async function main() {
 	const token = inputs.string("vercel-token", true)
 	const orgId = inputs.string("vercel-org-id", true)
 	const projectId = inputs.string("vercel-project-id", true)
+	const promote = inputs.boolean("promote", true)
 
 	if (production) {
 		core.info("Deploying to production...")
@@ -33,6 +34,7 @@ run(async function main() {
 		cwd,
 		production,
 		prebuilt,
+		promote,
 		orgId,
 		projectId,
 		token,
