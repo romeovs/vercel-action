@@ -32402,6 +32402,7 @@ async function deploy(options) {
     let stderr = "";
     await exec.exec("vercel", args, {
         cwd,
+        silent: true,
         listeners: {
             stdout(data) {
                 stdout += data.toString();

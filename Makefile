@@ -17,10 +17,10 @@ build-promote: dist/promote/index.js
 always:
 	@true
 
-dist/%/index.js: always
+dist/%/index.js: src/actions/%.ts always
 	@$(log) "Building $$(basename $$(dirname $@))..."
 	@rm -rf $$(dirname $@)
-	@$(bin)/ncc build src/actions/deploy.ts --out $$(dirname $@) -q
+	@$(bin)/ncc build $< --out $$(dirname $@) -q
 
 .PHONY: format
 format:
