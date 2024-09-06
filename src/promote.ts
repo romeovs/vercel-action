@@ -12,7 +12,14 @@ type PromoteOptions = {
 export async function promote(options: PromoteOptions) {
 	const { deploymentUrl, cwd, token, orgId, projectId } = options
 
-	const args: string[] = ["promote", "--token", token, deploymentUrl]
+	const args: string[] = [
+		"promote",
+		"--token",
+		token,
+		"--scope",
+		orgId,
+		deploymentUrl,
+	]
 
 	core.exportVariable("VERCEL_ORG_ID", orgId)
 	core.exportVariable("VERCEL_PROJECT_ID", projectId)
