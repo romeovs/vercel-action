@@ -32375,7 +32375,7 @@ var github = __nccwpck_require__(5942);
 
 async function deploy(options) {
     var _a;
-    const { production, prebuilt, cwd, token, orgId, projectId } = options;
+    const { production, prebuilt, promote, cwd, token, orgId, projectId } = options;
     const { context } = github;
     const args = ["deploy", "--token", token, "--no-wait", "--archive=tgz"];
     if (production) {
@@ -32383,6 +32383,9 @@ async function deploy(options) {
     }
     if (prebuilt) {
         args.push("--prebuilt");
+    }
+    if (!promote) {
+        args.push("--skip-domain");
     }
     const meta = {
         commitSha: context.sha,
@@ -32508,6 +32511,7 @@ run(async function main() {
     const token = string("vercel-token", true);
     const orgId = string("vercel-org-id", true);
     const projectId = string("vercel-project-id", true);
+    const promote = inputs_boolean("promote", true);
     if (production) {
         core.info("Deploying to production...");
     }
@@ -32525,6 +32529,7 @@ run(async function main() {
         cwd,
         production,
         prebuilt,
+        promote,
         orgId,
         projectId,
         token,

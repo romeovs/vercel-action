@@ -7,10 +7,11 @@ title = $(shell pwd | xargs basename)
 log = printf "$(__blue)$(title): $(__normal) %s\\n"
 
 .PHONY: build
-build: build-deploy build-build
+build: build-deploy build-build build-promote
 
 build-deploy: dist/deploy/index.js
 build-build: dist/build/index.js
+build-promote: dist/promote/index.js
 
 .PHONY: always
 always:

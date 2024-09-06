@@ -1,0 +1,26 @@
+name: Vercel Promote
+description: Promote a vercel deployment
+inputs:
+  deployment-url:
+    description: the deployment url of the deployment to promote
+    required: true
+  production:
+    description: set to "true" to deploy a production build
+    required: true
+    default: 'false'
+  working-directory:
+    description: the working directory
+    required: false
+    default: '.'
+  vercel-token:
+    description: the vercel token
+    required: true
+  vercel-org-id:
+    description: the vercel organization id
+    required: true
+  vercel-project-id:
+    description: the vercel project id
+    required: true
+runs:
+  using: node20
+  main: ../dist/promote/index.js
