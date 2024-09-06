@@ -29,4 +29,4 @@ outputs:
     description: Preview the deployment at this URL
 runs:
   using: node20
-  main: dist/index.js
+  main: ../dist/deploy/index.js
