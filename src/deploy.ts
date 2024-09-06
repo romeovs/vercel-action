@@ -57,7 +57,7 @@ export async function deploy(options: DeployOptions) {
 		},
 	})
 
-	const inspectUrl = stderr.match(" Inspect: ([^[]*) [.*]$")?.[1]
+	const inspectUrl = stderr.match("Inspect: ([^[]*) [.*]$")?.[1]
 	const deploymentUrl = stdout
 
 	if (inspectUrl) {

@@ -32412,7 +32412,7 @@ async function deploy(options) {
             },
         },
     });
-    const inspectUrl = (_a = stderr.match(" Inspect: ([^[]*) [.*]$")) === null || _a === void 0 ? void 0 : _a[1];
+    const inspectUrl = (_a = stderr.match("Inspect: ([^[]*) [.*]$")) === null || _a === void 0 ? void 0 : _a[1];
     const deploymentUrl = stdout;
     if (inspectUrl) {
         core.info(`Inspect the deployment at: ${inspectUrl}`);

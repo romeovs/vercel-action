@@ -28100,7 +28100,14 @@ var exec = __nccwpck_require__(7775);
 
 async function promote(options) {
     const { deploymentUrl, cwd, token, orgId, projectId } = options;
-    const args = ["promote", "--token", token, deploymentUrl];
+    const args = [
+        "promote",
+        "--token",
+        token,
+        "--scope",
+        orgId,
+        deploymentUrl,
+    ];
     core.exportVariable("VERCEL_ORG_ID", orgId);
     core.exportVariable("VERCEL_PROJECT_ID", projectId);
     await exec.exec("vercel", args, { cwd });
