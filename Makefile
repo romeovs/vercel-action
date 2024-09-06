@@ -7,13 +7,19 @@ title = $(shell pwd | xargs basename)
 log = printf "$(__blue)$(title): $(__normal) %s\\n"
 
 .PHONY: build
-build: build-deploy
+build: build-deploy build-build
 
-.PHONY: build-deploy
-build-deploy:
-	@$(log) "Building..."
-	@rm -rf dist/
-	@$(bin)/ncc build src/actions/deploy.ts --out dist/deploy
+build-deploy: dist/deploy/index.js
+build-build: dist/build/index.js
+
+.PHONY: always
+always:
+	@true
+
+dist/%/index.js: always
+	@$(log) "Building $$(basename $$(dirname $@))..."
+	@rm -rf $$(dirname $@)
+	@$(bin)/ncc build src/actions/deploy.ts --out $$(dirname $@) -q
 
 .PHONY: format
 format:
