@@ -1,0 +1,14 @@
+name: Vercel Wait For Checks
+description: Wait for deployment checks to complete
+inputs:
+  vercel-token:
+    description: the vercel token
+    required: true
+  vercel-org-id:
+    description: the vercel organization id
+    required: true
+  deployment-url:
+    description: Preview the deployment at this URL
+runs:
+  using: node20
+  main: ../dist/wait-for-checks/index.js
