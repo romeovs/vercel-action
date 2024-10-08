@@ -32390,6 +32390,7 @@ async function deploy(options) {
     const meta = {
         commitSha: context.sha,
         commitAuthor: context.actor,
+        commitRef: context.ref,
         githubOrg: context.repo.owner,
         githubRepo: context.repo.repo,
     };
