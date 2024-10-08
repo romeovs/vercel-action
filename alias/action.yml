@@ -1,0 +1,32 @@
+name: Vercel Alias
+description: Alias a vercel deployment to a domain
+inputs:
+  deployment-url:
+    description: the deployment url of the deployment to promote
+    required: true
+  production:
+    description: set to "true" to deploy a production build
+    required: true
+    default: 'false'
+  working-directory:
+    description: the working directory
+    required: false
+    default: '.'
+  vercel-token:
+    description: the vercel token
+    required: true
+  vercel-org-id:
+    description: the vercel organization id
+    required: true
+  vercel-project-id:
+    description: the vercel project id
+    required: true
+  domains:
+    description: a list of newline separated mappings from branch name to domain name to alias to.
+    required: true
+  alias:
+    description: the name of alias to use
+    required: true
+runs:
+  using: node20
+  main: ../dist/alias/index.js
