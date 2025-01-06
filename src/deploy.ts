@@ -45,7 +45,7 @@ export async function deploy(options: DeployOptions) {
 	let stdout = ""
 	let stderr = ""
 
-	await exec.exec("vercel", args, {
+	await exec.exec("node_modules/.bin/vercel", args, {
 		cwd,
 		silent: true,
 		listeners: {

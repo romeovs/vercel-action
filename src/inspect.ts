@@ -20,7 +20,7 @@ export async function inspect(options: InspectOptions) {
 	let stdout = ""
 	let stderr = ""
 
-	await exec.exec("vercel", args, {
+	await exec.exec("node_modules/.bin/vercel", args, {
 		cwd,
 		listeners: {
 			stdout(data) {

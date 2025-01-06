@@ -47,7 +47,7 @@ async function build(options: BuildOptions) {
 		args.push("--prod")
 	}
 
-	await exec.exec("vercel", args, { cwd })
+	await exec.exec("node_modules/.bin/vercel", args, { cwd })
 }
 
 type PullOptions = {
@@ -71,7 +71,7 @@ async function pull(options: PullOptions) {
 	core.exportVariable("VERCEL_ORG_ID", orgId)
 	core.exportVariable("VERCEL_PROJECT_ID", projectId)
 
-	await exec.exec("vercel", args, { cwd })
+	await exec.exec("node_modules/.bin/vercel", args, { cwd })
 }
 
 async function exists(path: string) {

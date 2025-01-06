@@ -28110,7 +28110,7 @@ async function promote(options) {
     ];
     core.exportVariable("VERCEL_ORG_ID", orgId);
     core.exportVariable("VERCEL_PROJECT_ID", projectId);
-    await exec.exec("vercel", args, { cwd });
+    await exec.exec("node_modules/.bin/vercel", args, { cwd });
 }
 
 ;// CONCATENATED MODULE: external "node:fs"
@@ -28129,7 +28129,7 @@ async function pull(options) {
     }
     core.exportVariable("VERCEL_ORG_ID", orgId);
     core.exportVariable("VERCEL_PROJECT_ID", projectId);
-    await exec.exec("vercel", args, { cwd });
+    await exec.exec("node_modules/.bin/vercel", args, { cwd });
 }
 async function exists(path) {
     try {
