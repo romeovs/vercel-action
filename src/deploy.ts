@@ -47,7 +47,7 @@ export async function deploy(options: DeployOptions) {
 
 	await exec.exec("node_modules/.bin/vercel", args, {
 		cwd,
-		silent: true,
+		// silent: true,
 		listeners: {
 			stdout(data) {
 				stdout += data.toString()

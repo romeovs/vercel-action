@@ -32403,7 +32403,7 @@ async function deploy(options) {
     let stderr = "";
     await exec.exec("node_modules/.bin/vercel", args, {
         cwd,
-        silent: true,
+        // silent: true,
         listeners: {
             stdout(data) {
                 stdout += data.toString();
