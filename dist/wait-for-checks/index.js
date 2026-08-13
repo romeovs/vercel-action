@@ -26875,6 +26875,10 @@ async function checks(options) {
         }
         await delay(WAIT_TIME);
         const info = await deployment(options);
+        if (info.checksState === undefined) {
+            lib_core.info("No checks set, finishing");
+            return;
+        }
         lib_core.info(`Checks state: ${info.checksState}`);
         if (info.checksState === "completed") {
             if (info.checksConclusion === "succeeded") {

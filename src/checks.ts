@@ -22,6 +22,12 @@ export async function checks(options: ChecksOptions): Promise<void> {
 		await delay(WAIT_TIME)
 
 		const info = await deployment(options)
+
+		if (info.checksState === undefined) {
+			core.info("No checks set, finishing")
+			return
+		}
+
 		core.info(`Checks state: ${info.checksState}`)
 
 		if (info.checksState === "completed") {

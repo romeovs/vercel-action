@@ -5,7 +5,7 @@ type DeploymentOptions = {
 }
 
 type DeploymentInfo = {
-	checksState: "registered" | "running" | "completed"
+	checksState: "registered" | "running" | "completed" | undefined
 	checksConclusion: "succeeded" | "failed" | "skipped" | "canceled"
 }
 
