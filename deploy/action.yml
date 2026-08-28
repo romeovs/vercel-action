@@ -32,5 +32,5 @@ outputs:
   deployment-url:
     description: Preview the deployment at this URL
 runs:
-  using: node20
+  using: node24
   main: ../dist/deploy/index.js

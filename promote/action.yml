@@ -22,5 +22,5 @@ inputs:
     description: the vercel project id
     required: true
 runs:
-  using: node20
+  using: node24
   main: ../dist/promote/index.js
